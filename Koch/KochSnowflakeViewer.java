@@ -11,10 +11,10 @@ import javax.swing.*;
 
 public class KochSnowflakeViewer implements ActionListener
 {
-    private final int WIDTH = 400;
-    private final int HEIGHT = 500;
+    private final int WIDTH = 600;
+    private final int HEIGHT = 700;
 
-    private final int MIN = 1, MAX = 9;
+    private final int MIN = 1, MAX = 15;
 
     private JButton increase, decrease;
     private JLabel titleLabel, orderLabel;
@@ -27,11 +27,14 @@ public class KochSnowflakeViewer implements ActionListener
     //-----------------------------------------------------------------
     public static void main(String[] args)
     {
-        KochSnowflakeViewer viewer = new KochSnowflakeViewer();
+        int selection=(int)(3*Math.random());
+        int selection2=(int)(3*Math.random());
+        KochSnowflakeViewer viewer = new KochSnowflakeViewer(selection,selection2);
     }
 
-    public KochSnowflakeViewer()
+    public KochSnowflakeViewer(int sel,int s2)
     {
+        
         tools = new JPanel ();
         tools.setLayout (new BoxLayout(tools, BoxLayout.X_AXIS));
         tools.setBackground (Color.yellow);
@@ -59,7 +62,7 @@ public class KochSnowflakeViewer implements ActionListener
         tools.add (Box.createHorizontalStrut (20));
         tools.add (orderLabel);
 
-        drawing = new KochPanel (1);
+        drawing = new KochPanel (1,sel,s2);
 
         panel = new JPanel();
         panel.add (tools);
