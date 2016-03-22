@@ -28,7 +28,7 @@ public class RecordReader
       int count = in.nextInt();
       double percent = in.nextDouble();
       
-      if (total < limit) { System.out.print(name + " "); }
+      if (total < limit && percent>=.5) { System.out.print(name + " "); }
       total = total + percent;
    }
 
