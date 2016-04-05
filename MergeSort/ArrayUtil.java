@@ -37,5 +37,42 @@ public class ArrayUtil
       a[i] = a[j];
       a[j] = temp;
    }
+   public static String[] randomStringArray(int length, int numChars)
+   {
+       String[] a = new String[length];      
+      for (int i = 0; i < a.length; i++)
+      {
+         a[i] = ArrayUtil.randomString(numChars);
+      }
+      
+      return a;
+    }
+   public static String randomString(int numChars)
+   {
+       String alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+       String retrn="";
+       numChars=generator.nextInt(numChars)+1;
+       for (int i=0;i<numChars;i++)
+       {           
+           retrn=alphabet.charAt(generator.nextInt(alphabet.length()))+retrn;           
+        }
+       return retrn;
+    }
+   public static boolean isSortedInt(int[] arr)
+   {
+       int last=arr[0];
+       for (int element:arr)
+       {
+           if (last<=element)
+           {
+               last=element;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+   }
 }
       

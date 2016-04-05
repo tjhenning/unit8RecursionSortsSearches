@@ -19,13 +19,17 @@ public class Webpage
         PrintWriter out=new PrintWriter("output.txt");
         while (in.hasNext())
         {
-            out.println(in.nextLine());
+            out.println(in.next());               
         }
         in=new Scanner(page.openStream());
         in.useDelimiter("<li><a href=");
         while (in.hasNext())
         {
-            System.out.println(in.nextLine());            
+            in.next();
+            if(in.hasNext())
+            {
+                System.out.println(in.nextLine());   
+            }
         }
          System.out.println("Done");
         out.close();
