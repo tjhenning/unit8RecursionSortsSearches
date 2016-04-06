@@ -8,50 +8,51 @@ public class BucketSort  //aka random sort
     {
         
         int[] arr=ArrayUtil.randomIntArray(7,400);
-        
+        System.out.println(Arrays.toString(arr));
+        arr=BucketSort.putInBuckets(arr,3);
+        //arr=BucketSort.putInBuckets(arr,1);
+        //arr=BucketSort.putInBuckets(arr,1);
+        System.out.println(Arrays.toString(arr));
         
     }
     public static int[] putInBuckets(int[] a, int index)
     {
-        ArrayList<Integer> zero=new ArrayList<Integer>();
-        ArrayList<Integer> one=new ArrayList<Integer>();
-        ArrayList<Integer> two=new ArrayList<Integer>();
-        ArrayList<Integer> three=new ArrayList<Integer>();
-        ArrayList<Integer> four=new ArrayList<Integer>();
-        ArrayList<Integer> five=new ArrayList<Integer>();
-        ArrayList<Integer> six=new ArrayList<Integer>();
-        //int divBy=Math.pow(10,index-1);
+        ArrayList<ArrayList<Integer>> allNumbers=new ArrayList<ArrayList<Integer>>();
+        
+        for (int i=0;i<10;i++)
+        {
+            allNumbers.add(new ArrayList<Integer>());
+        }
         for (int element:a)
         {
-            String num1=Integer.toString(element);
-            char num=num1.charAt(num1.length()-index);
-            if (num=='0')
+            String num1=Integer.toString(element);      
+            char num=0;
+            try
             {
-                zero.add(element);
+                num=num1.charAt(num1.length()-index);
             }
-            else if (num=='1')
+            catch(Exception e)
             {
-                one.add(element);
-            }else if (num=='2')
-            {
-                two.add(element);
-            }else if (num=='3')
-            {
-                three.add(element);
-            }else if (num=='4')
-            {
-                four.add(element);
-            }else if (num=='5')
-            {
-                five.add(element);
-            }else if (num=='6')
-            {
-                six.add(element);
+                num=0;
             }
             
+            allNumbers.get(Character.getNumericValue(num)).add(element);
             
         }
+        int[] newlist=new int[a.length];
+        int count=0;        
         
-        return null;
+        for (ArrayList<Integer> number:allNumbers)
+        {
+            if (number.size()!=0)
+            {
+                for (Integer i:number)
+                {
+                    newlist[count]=i;
+                    count++;
+                }
+            }
+        }
+        return newlist;
     }
 }
